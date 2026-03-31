@@ -1,0 +1,220 @@
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\admin\layout.tsx[24m[0m
+[0m  [2m64:10[22m  [31merror[39m  Error: Cannot create components during render[0m
+[0m[0m
+[0mComponents created during render will reset their state each time they are created. Declare components outside of render.[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\admin\layout.tsx:64:10[0m
+[0m  62 |       {/* Desktop Sidebar */}[0m
+[0m  63 |       <aside className="hidden md:block">[0m
+[0m> 64 |         <SidebarContent />[0m
+[0m     |          ^^^^^^^^^^^^^^ This component is created during render[0m
+[0m  65 |       </aside>[0m
+[0m  66 |[0m
+[0m  67 |       {/* Mobile Topbar & Main Content */}[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\admin\layout.tsx:19:26[0m
+[0m  17 |   const pathname = usePathname();[0m
+[0m  18 |[0m
+[0m> 19 |   const SidebarContent = () => ([0m
+[0m     |                          ^^^^^^^[0m
+[0m> 20 |     <div className="flex flex-col h-full bg-[#111122] border-r border-white/10 w-64 shrink-0 px-4 py-8">[0m
+[0m     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 21 |       {/* Logo */}[0m
+[0m     …[0m
+[0m     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 57 |     </div>[0m
+[0m     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 58 |   );[0m
+[0m     | ^^^^ The component is created during render here[0m
+[0m  59 |[0m
+[0m  60 |   return ([0m
+[0m  61 |     <div className="min-h-screen bg-[#0F0F0F] text-white flex">                                                                                                        [2mreact-hooks/static-components[22m[0m
+[0m  [2m82:16[22m  [31merror[39m  Error: Cannot create components during render[0m
+[0m[0m
+[0mComponents created during render will reset their state each time they are created. Declare components outside of render.[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\admin\layout.tsx:82:16[0m
+[0m  80 |             <SheetContent side="left" className="p-0 border-r-white/10 w-64 bg-[#111122]">[0m
+[0m  81 |               <SheetTitle className="sr-only">Menu</SheetTitle>[0m
+[0m> 82 |               <SidebarContent />[0m
+[0m     |                ^^^^^^^^^^^^^^ This component is created during render[0m
+[0m  83 |             </SheetContent>[0m
+[0m  84 |           </Sheet>[0m
+[0m  85 |         </header>[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\admin\layout.tsx:19:26[0m
+[0m  17 |   const pathname = usePathname();[0m
+[0m  18 |[0m
+[0m> 19 |   const SidebarContent = () => ([0m
+[0m     |                          ^^^^^^^[0m
+[0m> 20 |     <div className="flex flex-col h-full bg-[#111122] border-r border-white/10 w-64 shrink-0 px-4 py-8">[0m
+[0m     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 21 |       {/* Logo */}[0m
+[0m     …[0m
+[0m     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 57 |     </div>[0m
+[0m     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 58 |   );[0m
+[0m     | ^^^^ The component is created during render here[0m
+[0m  59 |[0m
+[0m  60 |   return ([0m
+[0m  61 |     <div className="min-h-screen bg-[#0F0F0F] text-white flex">  [2mreact-hooks/static-components[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\admin\products\new\page.tsx[24m[0m
+[0m  [2m8:61[22m  [33mwarning[39m  'ImageIcon' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\cart\page.tsx[24m[0m
+[0m  [2m19:19[22m  [31merror[39m  Error: Calling setState synchronously within an effect can trigger cascading renders[0m
+[0m[0m
+[0mEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:[0m
+[0m* Update external systems with the latest state from React.[0m
+[0m* Subscribe for updates from some external system, calling setState in a callback function when external state changes.[0m
+[0m[0m
+[0mCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\cart\page.tsx:19:19[0m
+[0m  17 |   const [mounted, setMounted] = useState(false);[0m
+[0m  18 |[0m
+[0m> 19 |   useEffect(() => setMounted(true), []);[0m
+[0m     |                   ^^^^^^^^^^ Avoid calling setState() directly within an effect[0m
+[0m  20 |[0m
+[0m  21 |   if (!mounted) {[0m
+[0m  22 |     return (  [2mreact-hooks/set-state-in-effect[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\checkout\page.tsx[24m[0m
+[0m  [2m40:19[22m  [31merror[39m  Error: Calling setState synchronously within an effect can trigger cascading renders[0m
+[0m[0m
+[0mEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:[0m
+[0m* Update external systems with the latest state from React.[0m
+[0m* Subscribe for updates from some external system, calling setState in a callback function when external state changes.[0m
+[0m[0m
+[0mCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\checkout\page.tsx:40:19[0m
+[0m  38 |   });[0m
+[0m  39 |[0m
+[0m> 40 |   useEffect(() => setMounted(true), []);[0m
+[0m     |                   ^^^^^^^^^^ Avoid calling setState() directly within an effect[0m
+[0m  41 |[0m
+[0m  42 |   const handleChange = (field: keyof CheckoutFormData, value: string) => {[0m
+[0m  43 |     setFormData((prev) => ({ ...prev, [field]: value }));  [2mreact-hooks/set-state-in-effect[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\checkout\success\page.tsx[24m[0m
+[0m  [2m25:5[22m  [31merror[39m  Error: Calling setState synchronously within an effect can trigger cascading renders[0m
+[0m[0m
+[0mEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:[0m
+[0m* Update external systems with the latest state from React.[0m
+[0m* Subscribe for updates from some external system, calling setState in a callback function when external state changes.[0m
+[0m[0m
+[0mCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\checkout\success\page.tsx:25:5[0m
+[0m  23 |     };[0m
+[0m  24 |     [0m
+[0m> 25 |     setOrderId(generateId());[0m
+[0m     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect[0m
+[0m  26 |     setMounted(true);[0m
+[0m  27 |     [0m
+[0m  28 |     // Ensure cart is cleared (failsafe)  [2mreact-hooks/set-state-in-effect[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\not-found.tsx[24m[0m
+[0m  [2m12:43[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m  [2m12:74[22m  [31merror[39m  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  [2mreact/no-unescaped-entities[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\products\page.tsx[24m[0m
+[0m    [2m9:37[22m  [33mwarning[39m  'ChevronDown' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m169:18[22m  [31merror[39m    Error: Cannot create components during render[0m
+[0m[0m
+[0mComponents created during render will reset their state each time they are created. Declare components outside of render.[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\products\page.tsx:169:18[0m
+[0m  167 |                   <SheetTitle className="text-left mb-6 text-2xl font-bold">Filters</SheetTitle>[0m
+[0m  168 |                 </SheetHeader>[0m
+[0m> 169 |                 <FilterContent />[0m
+[0m      |                  ^^^^^^^^^^^^^ This component is created during render[0m
+[0m  170 |               </SheetContent>[0m
+[0m  171 |             </Sheet>[0m
+[0m  172 |[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\products\page.tsx:77:25[0m
+[0m   75 |   }, [products, selectedCategory, searchQuery, sortBy, maxPrice]);[0m
+[0m   76 |[0m
+[0m>  77 |   const FilterContent = () => ([0m
+[0m      |                         ^^^^^^^[0m
+[0m>  78 |     <div className="space-y-8">[0m
+[0m      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m>  79 |       {/* Categories */}[0m
+[0m      …[0m
+[0m      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 129 |     </div>[0m
+[0m      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 130 |   );[0m
+[0m      | ^^^^ The component is created during render here[0m
+[0m  131 |[0m
+[0m  132 |   return ([0m
+[0m  133 |     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 mb-20">  [2mreact-hooks/static-components[22m[0m
+[0m  [2m195:14[22m  [31merror[39m    Error: Cannot create components during render[0m
+[0m[0m
+[0mComponents created during render will reset their state each time they are created. Declare components outside of render.[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\products\page.tsx:195:14[0m
+[0m  193 |         <aside className="hidden md:block w-64 shrink-0">[0m
+[0m  194 |           <div className="sticky top-24 glass rounded-3xl p-6">[0m
+[0m> 195 |             <FilterContent />[0m
+[0m      |              ^^^^^^^^^^^^^ This component is created during render[0m
+[0m  196 |           </div>[0m
+[0m  197 |         </aside>[0m
+[0m  198 |[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\app\products\page.tsx:77:25[0m
+[0m   75 |   }, [products, selectedCategory, searchQuery, sortBy, maxPrice]);[0m
+[0m   76 |[0m
+[0m>  77 |   const FilterContent = () => ([0m
+[0m      |                         ^^^^^^^[0m
+[0m>  78 |     <div className="space-y-8">[0m
+[0m      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m>  79 |       {/* Categories */}[0m
+[0m      …[0m
+[0m      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 129 |     </div>[0m
+[0m      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 130 |   );[0m
+[0m      | ^^^^ The component is created during render here[0m
+[0m  131 |[0m
+[0m  132 |   return ([0m
+[0m  133 |     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 mb-20">                                 [2mreact-hooks/static-components[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\components\layout\Navbar.tsx[24m[0m
+[0m   [2m27:36[22m  [31merror[39m    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m   [2m33:5[22m   [31merror[39m    Error: Calling setState synchronously within an effect can trigger cascading renders[0m
+[0m[0m
+[0mEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:[0m
+[0m* Update external systems with the latest state from React.[0m
+[0m* Subscribe for updates from some external system, calling setState in a callback function when external state changes.[0m
+[0m[0m
+[0mCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).[0m
+[0m[0m
+[0mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\components\layout\Navbar.tsx:33:5[0m
+[0m  31 |[0m
+[0m  32 |   useEffect(() => {[0m
+[0m> 33 |     setMounted(true);[0m
+[0m     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect[0m
+[0m  34 |     const handleScroll = () => setIsScrolled(window.scrollY > 20);[0m
+[0m  35 |     window.addEventListener("scroll", handleScroll);[0m
+[0m  36 |       [2mreact-hooks/set-state-in-effect[22m[0m
+[0m  [2m145:25[22m  [33mwarning[39m  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    [2m@next/next/no-img-element[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\components\ui\ProductCard.tsx[24m[0m
+[0m  [2m5:10[22m  [33mwarning[39m  'Star' is defined but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\hooks\useMutateProduct.ts[24m[0m
+[0m  [2m10:37[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m  [2m25:64[22m  [31merror[39m  Unexpected any. Specify a different type  [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[4mC:\Users\skb20\OneDrive\Desktop\kavin\bootcamp\week-15\src\hooks\useProducts.ts[24m[0m
+[0m  [2m53:28[22m  [33mwarning[39m  'count' is assigned a value but never used  [2m@typescript-eslint/no-unused-vars[22m[0m
+[0m  [2m58:23[22m  [31merror[39m    Unexpected any. Specify a different type    [2m@typescript-eslint/no-explicit-any[22m[0m
+[0m[0m
+[0m[31m[1m✖ 19 problems (14 errors, 5 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m
