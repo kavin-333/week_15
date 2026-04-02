@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useCartStore } from "@/store/cart.store";
 import { createClient } from "@/lib/supabase/client";
+import type { Session, AuthChangeEvent } from "@supabase/supabase-js";
 import { motion } from "framer-motion";
 import { useCartSync } from "@/hooks/useCartSync";
 import { useRouter } from "next/navigation";
@@ -42,11 +43,11 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     
     // Check auth
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
       setUser(session?.user || null);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
       setUser(session?.user || null);
     });
 
