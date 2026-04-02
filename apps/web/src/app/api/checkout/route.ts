@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { CartItem } from "@/store/cart.store";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2023-10-16" as any,
-});
-
 export async function POST(req: Request) {
   try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+      apiVersion: "2023-10-16" as any,
+    });
+
     const { items, email } = await req.json();
 
     if (!process.env.STRIPE_SECRET_KEY || process.env.STRIPE_SECRET_KEY === "sk_test_...") {
