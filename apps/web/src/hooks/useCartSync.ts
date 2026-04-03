@@ -10,6 +10,9 @@ export function useCartSync() {
   const supabase = createClient();
 
   useEffect(() => {
+    // Skip if Supabase client is not available (e.g., during build time)
+    if (!supabase) return;
+
     const syncCart = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       const user = session?.user;
