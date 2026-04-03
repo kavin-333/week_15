@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart.store";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,14 +12,18 @@ import { ArrowLeft, Check, Lock, MapPin, Search } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "sonner";
+import { createClient } from "@/lib/supabase/client";
 
 export default function CheckoutPage() {
   const items = useCartStore((s) => s.items);
+  const router = useRouter();
+  const supabase = createClient();
   
   const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
   const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   
   const [step, setStep] = useState<1 | 2>(1);
 
@@ -34,7 +39,26 @@ export default function CheckoutPage() {
     country: "",
   });
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        if (!user) {
+          router.push("/auth/sign-in");
+          return;
+        }
+        
+        setMounted(true);
+        setIsCheckingAuth(false);
+      } catch (error) {
+        console.error("Auth check error:", error);
+        router.push("/auth/sign-in");
+      }
+    };
+    
+    checkAuth();
+  }, [router, supabase]);
 
   const handleChange = (field: keyof CheckoutFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -95,10 +119,13 @@ export default function CheckoutPage() {
     }
   };
 
-  if (!mounted) {
+  if (!mounted || isCheckingAuth) {
     return (
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        <div className="h-10 bg-white/5 rounded w-32 animate-pulse" />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="h-10 bg-white/5 rounded w-32 animate-pulse mx-auto mb-4" />
+          <p className="text-muted-foreground">Loading checkout...</p>
+        </div>
       </div>
     );
   }
