@@ -39,19 +39,25 @@ export function Navbar() {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     
-    supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
-      setUser(session?.user || null);
-    });
+    if (supabase?.auth) {
+      supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
+        setUser(session?.user || null);
+      });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
-      setUser(session?.user || null);
-    });
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
+        setUser(session?.user || null);
+      });
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      subscription.unsubscribe();
-    };
-  }, [supabase.auth]);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        subscription.unsubscribe();
+      };
+    } else {
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [supabase?.auth]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
