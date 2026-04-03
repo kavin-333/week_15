@@ -11,7 +11,7 @@
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
 
-  /* ShopZen custom colors */
+  
   --color-surface: var(--surface);
   --color-coral: var(--coral);
   --color-purple: var(--purple);
@@ -55,7 +55,6 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ShopZen Dark Theme - Always dark */
 :root {
   --background: #0F0F0F;
   --foreground: #EAEAEA;
@@ -77,7 +76,7 @@
   --ring: #6C63FF;
   --radius: 1rem;
 
-  /* ShopZen extras */
+  
   --surface: #1A1A2E;
   --coral: #FF6584;
   --purple: #6C63FF;
@@ -111,7 +110,6 @@
   }
 }
 
-/* Glassmorphism utility */
 .glass {
   background: rgba(26, 26, 46, 0.6);
   backdrop-filter: blur(16px);
@@ -124,12 +122,10 @@
   border-color: rgba(108, 99, 255, 0.3);
 }
 
-/* Smooth transitions */
 .transition-smooth {
   transition: all 200ms ease;
 }
 
-/* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #6C63FF 0%, #FF6584 100%);
   -webkit-background-clip: text;
@@ -137,7 +133,6 @@
   background-clip: text;
 }
 
-/* Glow effects */
 .glow-purple {
   box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
 }
@@ -146,7 +141,6 @@
   box-shadow: 0 0 20px rgba(255, 101, 132, 0.3);
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }

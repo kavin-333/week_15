@@ -18,7 +18,6 @@ export default function CartPage() {
   
   const [mounted, setMounted] = useState(false);
 
-  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
@@ -67,14 +66,14 @@ export default function CartPage() {
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Items */}
+        {}
         <div className="lg:col-span-2 space-y-4">
           {items.map((item) => (
             <div
               key={item.productId}
               className="glass rounded-2xl p-4 flex gap-4"
             >
-              {/* Image */}
+              {}
               <Link
                 href={`/products/${item.productId}`}
                 className="shrink-0"
@@ -90,7 +89,7 @@ export default function CartPage() {
                 </div>
               </Link>
 
-              {/* Details */}
+              {}
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2">
                   <div>
@@ -110,7 +109,7 @@ export default function CartPage() {
                 </div>
 
                 <div className="flex items-center justify-between mt-3">
-                  {/* Quantity */}
+                  {}
                   <div className="flex items-center bg-white/5 rounded-xl">
                     <button
                       onClick={() =>
@@ -133,7 +132,7 @@ export default function CartPage() {
                     </button>
                   </div>
 
-                  {/* Price */}
+                  {}
                   <p className="font-bold">
                     ${(item.price * item.quantity).toFixed(2)}
                   </p>
@@ -143,7 +142,7 @@ export default function CartPage() {
           ))}
         </div>
 
-        {/* Order Summary */}
+        {}
         <div className="lg:col-span-1">
           <div className="glass rounded-2xl p-6 sticky top-24">
             <h2 className="text-lg font-bold mb-4">Order Summary</h2>

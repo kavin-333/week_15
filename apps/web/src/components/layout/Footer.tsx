@@ -28,7 +28,7 @@ export function Footer() {
     <footer className="border-t border-white/5 bg-[#0a0a0a] mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Brand */}
+          {}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-[#6C63FF] to-[#FF6584] flex items-center justify-center">
@@ -61,7 +61,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links */}
+          {}
           <div>
             <h3 className="text-sm font-semibold mb-4">Shop</h3>
             <ul className="space-y-2.5">

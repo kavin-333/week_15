@@ -75,7 +75,7 @@ export default function SignInPage() {
   return (
     <div className="min-h-[calc(100vh-10rem)] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
-        {/* Header */}
+        {}
         <div className="text-center mb-8">
           <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#FF6584] flex items-center justify-center mx-auto mb-4">
             <span className="text-white font-bold text-lg">S</span>
@@ -86,7 +86,7 @@ export default function SignInPage() {
           </p>
         </div>
 
-        {/* Form */}
+        {}
         <div className="glass rounded-2xl p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -172,7 +172,7 @@ export default function SignInPage() {
           </form>
         </div>
 
-        {/* Footer */}
+        {}
         <p className="text-center text-sm text-muted-foreground mt-6">
           Don&apos;t have an account?{" "}
           <Link

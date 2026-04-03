@@ -26,23 +26,19 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [mounted, setMounted] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [user, setUser] = useState<any>(null);
   const items = useCartStore((s) => s.items);
   const cartCount = items.reduce((total, item) => total + item.quantity, 0);
   const router = useRouter();
   const supabase = createClient();
   
-  // Custom hook to sync cart with Supabase
   useCartSync();
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     
-    // Check auth
     supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
       setUser(session?.user || null);
     });
@@ -76,14 +72,14 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           
-          {/* Logo (Left Aligned) */}
+          {}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <span className="text-2xl font-black bg-gradient-to-r from-[#6C63FF] to-[#FF6584] text-transparent bg-clip-text">
               ShopZen
             </span>
           </Link>
 
-          {/* Center: Search Bar */}
+          {}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl mx-8">
             <div className="relative w-full group">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-[#6C63FF] transition-colors" />
@@ -97,10 +93,10 @@ export function Navbar() {
             </div>
           </form>
 
-          {/* Right Actions */}
+          {}
           <div className="flex items-center gap-2 lg:gap-4 shrink-0">
             
-            {/* Category Dropdown (Desktop) */}
+            {}
             <div className="hidden md:block">
               <DropdownMenu>
                 <DropdownMenuTrigger render={<Button variant="ghost" className="gap-1 hover:bg-white/5 rounded-full px-4 text-sm font-medium" />}>
@@ -116,7 +112,7 @@ export function Navbar() {
               </DropdownMenu>
             </div>
 
-            {/* Cart Icon */}
+            {}
             <Link href="/cart">
               <Button
                 variant="ghost"
@@ -141,7 +137,7 @@ export function Navbar() {
               </Button>
             </Link>
 
-            {/* User Avatar / Login */}
+            {}
             {mounted ? (
               user ? (
                  <DropdownMenu>
@@ -175,7 +171,7 @@ export function Navbar() {
               <div className="h-10 w-10 sm:w-24 rounded-full bg-white/5 animate-pulse" />
             )}
 
-            {/* Mobile Menu Hamburger */}
+            {}
             <Sheet>
               <SheetTrigger render={<Button variant="ghost" size="icon" className="md:hidden hover:bg-white/5 rounded-full h-10 w-10 ml-1" />}>
                   <Menu className="h-5 w-5" />
@@ -189,7 +185,7 @@ export function Navbar() {
                 </div>
                 
                 <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-6">
-                  {/* Mobile Search */}
+                  {}
                   <form onSubmit={handleSearch}>
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -203,7 +199,7 @@ export function Navbar() {
                     </div>
                   </form>
 
-                  {/* Categories */}
+                  {}
                   <div className="space-y-4">
                     <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Categories</h3>
                     <div className="flex flex-col gap-2">
@@ -220,7 +216,7 @@ export function Navbar() {
                   </div>
                 </div>
 
-                {/* Mobile Auth/Footer */}
+                {}
                 <div className="p-4 border-t border-white/10">
                   {!user ? (
                     <div className="grid grid-cols-2 gap-3">

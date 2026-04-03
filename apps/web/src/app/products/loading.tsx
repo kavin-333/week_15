@@ -4,7 +4,7 @@ export default function ProductsLoading() {
       <div className="h-10 w-48 bg-white/5 rounded-xl animate-pulse mb-8" />
       
       <div className="flex flex-col md:flex-row gap-8">
-        {/* Sidebar Skeleton */}
+        {}
         <div className="w-full md:w-64 shrink-0 space-y-6 hidden md:block border-r border-white/10 pr-6">
           <div className="h-6 w-32 bg-white/5 rounded-md animate-pulse mb-4" />
           {Array.from({ length: 5 }).map((_, i) => (
@@ -14,7 +14,7 @@ export default function ProductsLoading() {
           <div className="h-12 w-full bg-white/5 rounded-lg animate-pulse" />
         </div>
 
-        {/* Grid Skeleton */}
+        {}
         <div className="flex-1">
           <div className="flex justify-between items-center mb-6">
             <div className="h-6 w-32 bg-white/5 rounded animate-pulse" />

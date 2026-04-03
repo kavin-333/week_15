@@ -24,7 +24,6 @@ export default function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   
-  // Steps: 1 = Shipping, 2 = Review
   const [step, setStep] = useState<1 | 2>(1);
 
   const [formData, setFormData] = useState<CheckoutFormData>({
@@ -39,7 +38,6 @@ export default function CheckoutPage() {
     country: "",
   });
 
-  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   const handleChange = (field: keyof CheckoutFormData, value: string) => {
@@ -92,7 +90,6 @@ export default function CheckoutPage() {
         throw new Error(data.error);
       }
 
-      // Redirect to Stripe Checkout
       window.location.href = data.url;
     } catch (error: any) {
       console.error("Checkout Error:", error);
@@ -109,7 +106,6 @@ export default function CheckoutPage() {
     );
   }
 
-  // If page loads with empty cart, and not just cleared
   if (items.length === 0 && !isSubmitting) {
     return (
       <div className="mx-auto max-w-4xl px-4 py-20 text-center">
@@ -165,7 +161,7 @@ export default function CheckoutPage() {
         <h1 className="text-3xl font-bold">Secure Checkout</h1>
       </div>
 
-      {/* Step Indicator */}
+      {}
       <div className="flex items-center justify-center mb-12 max-w-3xl mx-auto">
         <div className="flex items-center w-full relative">
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-white/10 rounded-full" />
@@ -201,7 +197,7 @@ export default function CheckoutPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-12 mt-16">
         
-        {/* Left Content Area (Form or Review) */}
+        {}
         <div className="lg:col-span-2">
           {step === 1 ? (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -289,7 +285,7 @@ export default function CheckoutPage() {
           )}
         </div>
 
-        {/* Order Summary Right Panel */}
+        {}
         <div className="lg:col-span-1">
           <div className="glass rounded-3xl p-6 lg:p-8 sticky top-24">
             <h2 className="text-xl font-bold mb-6">Order Summary</h2>

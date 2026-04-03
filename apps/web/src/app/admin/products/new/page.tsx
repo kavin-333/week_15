@@ -18,7 +18,6 @@ export default function AddEditProductPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  // Form states
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -42,7 +41,6 @@ export default function AddEditProductPage() {
 
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setImageUrl(e.target.value);
-    // Simple basic preview from URL
     if (e.target.value.startsWith("http")) {
       setImagePreview(e.target.value);
     } else {
@@ -53,7 +51,6 @@ export default function AddEditProductPage() {
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate save
     await new Promise((resolve) => setTimeout(resolve, 1500));
     toast.success("Product saved successfully!");
     setIsSubmitting(false);
@@ -63,7 +60,7 @@ export default function AddEditProductPage() {
   return (
     <div className="max-w-6xl mx-auto space-y-8 animate-in fade-in duration-500">
       
-      {/* Header Actions */}
+      {}
       <div className="flex items-center justify-between">
         <Link href="/admin/products" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors font-medium">
           <ArrowLeft className="h-4 w-4" /> Back to Products
@@ -96,7 +93,7 @@ export default function AddEditProductPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Form Details */}
+        {}
         <div className="lg:col-span-2 glass rounded-3xl p-8 border-white/5 space-y-8">
           <h2 className="text-xl font-bold border-b border-white/5 pb-4">General Details</h2>
           
@@ -169,7 +166,7 @@ export default function AddEditProductPage() {
           </div>
         </div>
 
-        {/* Right Image Upload */}
+        {}
         <div className="lg:col-span-1 space-y-8">
           <div className="glass rounded-3xl p-8 border-white/5">
             <h2 className="text-xl font-bold border-b border-white/5 pb-4 mb-6">Product Media</h2>

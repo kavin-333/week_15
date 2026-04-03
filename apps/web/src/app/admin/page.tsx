@@ -7,14 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
 
-// Extended mock user count and mock revenue, usually fetched from API
 const mockStats = {
   revenue: 15430.50,
   customers: 423,
   orders: 142
 };
 
-// Mock recent orders for overview
 const recentOrders = [
   { id: "ORD-1A8B2C", customer: "Sarah Johnson", total: 129.99, status: "pending", date: "2024-03-10" },
   { id: "ORD-3F9E4D", customer: "Michael Chen", total: 84.50, status: "processing", date: "2024-03-09" },
@@ -37,7 +35,7 @@ export default function AdminOverviewPage() {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       
-      {/* Header */}
+      {}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold mb-1">Overview</h1>
@@ -51,7 +49,7 @@ export default function AdminOverviewPage() {
         </Link>
       </div>
 
-      {/* Stat Cards */}
+      {}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {statCards.map((stat, i) => (
           <div key={i} className="glass rounded-3xl p-6 border-white/5 relative overflow-hidden group hover:bg-white/[0.03] transition-colors">
@@ -74,10 +72,10 @@ export default function AdminOverviewPage() {
         ))}
       </div>
 
-      {/* Tables Row */}
+      {}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        {/* Recent Orders */}
+        {}
         <div className="lg:col-span-2 glass rounded-3xl p-6 sm:p-8 border-white/5">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold">Recent Orders</h2>
@@ -123,7 +121,7 @@ export default function AdminOverviewPage() {
           </div>
         </div>
 
-        {/* Top Products / Low Stock alert */}
+        {}
         <div className="lg:col-span-1 glass rounded-3xl p-6 sm:p-8 border-white/5 flex flex-col">
           <h2 className="text-xl font-bold mb-6">Low Stock Items</h2>
           

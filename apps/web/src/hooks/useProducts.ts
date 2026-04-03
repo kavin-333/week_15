@@ -15,7 +15,6 @@ export function useProducts(params?: ProductsParams) {
   return useQuery({
     queryKey: ["products", params],
     queryFn: async () => {
-      // In mock mode with Zustand, we let the component handle filtering for maximum responsiveness
       return storeProducts as Product[];
     },
   });

@@ -15,7 +15,7 @@ const navItems = [
 
 const SidebarContent = ({ pathname }: { pathname: string }) => (
   <div className="flex flex-col h-full bg-[#111122] border-r border-white/10 w-64 shrink-0 px-4 py-8">
-    {/* Logo */}
+    {}
     <div className="flex items-center gap-2 px-2 mb-10">
       <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#FF6584] flex items-center justify-center font-bold text-white shadow-lg shadow-[#6C63FF]/30">
         S
@@ -23,7 +23,7 @@ const SidebarContent = ({ pathname }: { pathname: string }) => (
       <span className="text-xl font-bold tracking-tight">ShopZen Admin</span>
     </div>
 
-    {/* Nav Links */}
+    {}
     <nav className="flex-1 space-y-1">
       {navItems.map((item) => {
         const isActive = pathname === item.href || (pathname.startsWith(item.href) && item.href !== "/admin");
@@ -44,7 +44,7 @@ const SidebarContent = ({ pathname }: { pathname: string }) => (
       })}
     </nav>
 
-    {/* Actions */}
+    {}
     <div className="mt-auto">
       <Button variant="ghost" className="w-full justify-start gap-3 text-red-400 hover:text-red-300 hover:bg-red-400/10 rounded-xl px-3 py-6 font-medium">
         <LogOut className="h-5 w-5" />
@@ -59,14 +59,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="min-h-screen bg-[#0F0F0F] text-white flex">
-      {/* Desktop Sidebar */}
+      {}
       <aside className="hidden md:block">
         <SidebarContent pathname={pathname} />
       </aside>
 
-      {/* Mobile Topbar & Main Content */}
+      {}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Mobile Header */}
+        {}
         <header className="md:hidden sticky top-0 z-30 flex items-center justify-between px-4 h-16 bg-[#111122]/90 backdrop-blur-xl border-b border-white/10">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#6C63FF] to-[#FF6584] flex items-center justify-center font-bold text-white shadow-lg shadow-[#6C63FF]/30">
@@ -84,7 +84,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </Sheet>
         </header>
 
-        {/* Content */}
+        {}
         <main className="flex-1 p-4 sm:p-6 lg:p-8 xl:p-10 overflow-y-auto">
           {children}
         </main>

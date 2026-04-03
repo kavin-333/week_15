@@ -9,7 +9,6 @@ export function useMutateProduct() {
   const { addProduct, updateProduct, deleteProduct } = useProductStore();
 
   const createMutation = useMutation({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mutationFn: async (productData: any) => {
       const { data, error } = await supabase.from("products").insert([productData]).select().single();
       if (error) throw new Error(error.message);
@@ -17,7 +16,6 @@ export function useMutateProduct() {
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       addProduct(data as any);
       toast.success("Product created successfully");
     },
@@ -27,7 +25,6 @@ export function useMutateProduct() {
   });
 
   const updateMutation = useMutation({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mutationFn: async ({ id, ...updateData }: { id: string } & any) => {
       const { data, error } = await supabase
         .from("products")
@@ -41,7 +38,6 @@ export function useMutateProduct() {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
       queryClient.invalidateQueries({ queryKey: ["product", data.id] });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       updateProduct(data as any);
       toast.success("Product updated successfully");
     },

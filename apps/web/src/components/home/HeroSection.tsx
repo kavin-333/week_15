@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      {/* Background gradient */}
+      {}
       <div className="absolute inset-0 bg-gradient-to-br from-[#6C63FF]/20 via-[#0F0F0F] to-[#FF6584]/10" />
       <div className="absolute top-20 left-10 w-72 h-72 bg-[#6C63FF]/20 rounded-full blur-[120px]" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#FF6584]/15 rounded-full blur-[150px]" />
 
-      {/* Grid pattern overlay */}
+      {}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -22,7 +22,7 @@ export function HeroSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
         <div className="text-center max-w-3xl mx-auto">
-          {/* Badge */}
+          {}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6C63FF]/10 border border-[#6C63FF]/20 mb-6">
             <Sparkles className="h-3.5 w-3.5 text-[#6C63FF]" />
             <span className="text-xs font-medium text-[#6C63FF]">
@@ -30,7 +30,7 @@ export function HeroSection() {
             </span>
           </div>
 
-          {/* Headline */}
+          {}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight mb-6">
             Discover{" "}
             <span className="gradient-text">Products</span>
@@ -38,13 +38,13 @@ export function HeroSection() {
             You&apos;ll Love
           </h1>
 
-          {/* Subtitle */}
+          {}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
             Curated collection of the finest products. Shop with confidence,
             enjoy free shipping on orders over $50.
           </p>
 
-          {/* CTAs */}
+          {}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/products">
               <Button
@@ -68,7 +68,7 @@ export function HeroSection() {
             </Link>
           </div>
 
-          {/* Stats */}
+          {}
           <div className="flex items-center justify-center gap-8 sm:gap-12 mt-16">
             {[
               { value: "10K+", label: "Products" },

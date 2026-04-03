@@ -26,7 +26,7 @@ export default function AdminProductsPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      {/* Header Actions */}
+      {}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold mb-1">Products Management</h1>
@@ -41,7 +41,7 @@ export default function AdminProductsPage() {
       </div>
 
       <div className="glass rounded-3xl p-6 sm:p-8 border-white/5">
-        {/* Search */}
+        {}
         <div className="flex items-center justify-between mb-6">
           <div className="relative w-full max-w-sm border border-white/10 rounded-xl bg-white/5 focus-within:border-[#6C63FF]/50 transition-colors">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -54,7 +54,7 @@ export default function AdminProductsPage() {
           </div>
         </div>
 
-        {/* Table */}
+        {}
         <div className="overflow-x-auto custom-scrollbar">
           <table className="w-full text-sm text-left">
             <thead className="text-muted-foreground bg-white/5 border-b border-white/5">
@@ -128,7 +128,7 @@ export default function AdminProductsPage() {
           </table>
         </div>
         
-        {/* Pagination Footer */}
+        {}
         <div className="flex items-center justify-between mt-6 pt-6 border-t border-white/5 text-sm">
           <p className="text-muted-foreground">Showing {filteredProducts.length} entries</p>
           <div className="flex gap-2">

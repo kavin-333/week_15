@@ -34,7 +34,6 @@ export default function OrderSuccessPage() {
 
       const totalAmount = items.reduce((total, item) => total + item.price * item.quantity, 0);
       
-      // 1. Create Order
       const { data: order, error: orderError } = await supabase
         .from("orders")
         .insert({
@@ -53,7 +52,6 @@ export default function OrderSuccessPage() {
         return;
       }
 
-      // 2. Create Order Items
       const orderItems = items.map(item => ({
         order_id: order.id,
         product_id: item.productId,
@@ -88,7 +86,7 @@ export default function OrderSuccessPage() {
     <div className="min-h-[70vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full glass rounded-3xl p-8 sm:p-12 text-center animate-in zoom-in-95 duration-500">
         
-        {/* Animated Checkmark */}
+        {}
         <div className="relative mx-auto w-24 h-24 mb-8">
           <div className="absolute inset-0 bg-emerald-500/20 rounded-full animate-ping opacity-75" />
           <div className="relative flex items-center justify-center w-full h-full bg-emerald-500/20 text-emerald-400 rounded-full border-2 border-emerald-500/30">

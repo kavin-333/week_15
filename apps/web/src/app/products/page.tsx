@@ -32,7 +32,6 @@ function ProductsContent() {
   const { data: products, isLoading } = useProducts();
   const { data: categories } = useCategories();
 
-  // Reset display limit when filters change
   useEffect(() => {
     setDisplayLimit(12);
   }, [searchQuery, selectedCategory, maxPrice, sortBy]);
@@ -42,7 +41,6 @@ function ProductsContent() {
 
     let filtered = [...products];
 
-    // Filter by category
     if (selectedCategory !== "all") {
       filtered = filtered.filter(
         (p) => p.category.toLowerCase().replace(/ & /g, "-").replace(/ /g, "-") === selectedCategory ||
@@ -50,7 +48,6 @@ function ProductsContent() {
       );
     }
 
-    // Filter by search
     if (searchQuery) {
       const q = searchQuery.toLowerCase();
       filtered = filtered.filter(
@@ -61,10 +58,8 @@ function ProductsContent() {
       );
     }
 
-    // Filter by max price
     filtered = filtered.filter((p) => p.price <= maxPrice);
 
-    // Sort
     switch (sortBy) {
       case "price-asc":
         filtered.sort((a, b) => a.price - b.price);
@@ -86,7 +81,7 @@ function ProductsContent() {
 
   const filterContent = (
     <div className="space-y-8">
-      {/* Categories */}
+      {}
       <div>
         <h3 className="text-sm font-semibold mb-4 uppercase tracking-wider text-muted-foreground">Categories</h3>
         <div className="flex flex-wrap gap-2">
@@ -116,7 +111,7 @@ function ProductsContent() {
         </div>
       </div>
 
-      {/* Price Range */}
+      {}
       <div>
         <h3 className="text-sm font-semibold mb-4 uppercase tracking-wider text-muted-foreground flex justify-between">
           <span>Max Price</span>
@@ -142,7 +137,7 @@ function ProductsContent() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 mb-20">
       
-      {/* Header & Mobile Actions */}
+      {}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
         <div>
           <h1 className="text-3xl sm:text-4xl font-bold mb-2">Shop All</h1>
@@ -152,7 +147,7 @@ function ProductsContent() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
-          {/* Search */}
+          {}
           <div className="relative flex-1 w-full md:w-64">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
@@ -164,7 +159,7 @@ function ProductsContent() {
           </div>
 
           <div className="flex gap-3 w-full sm:w-auto">
-            {/* Mobile Filter Trigger */}
+            {}
             <Sheet>
               <SheetTrigger render={<Button variant="outline" className="flex-1 md:hidden bg-white/5 border-white/10 hover:bg-white/10 rounded-xl gap-2 font-medium" />}>
                   <SlidersHorizontal className="h-4 w-4" />
@@ -178,7 +173,7 @@ function ProductsContent() {
               </SheetContent>
             </Sheet>
 
-            {/* Sort Dropdown */}
+            {}
             <div className="w-full sm:w-48">
                <Select value={sortBy} onValueChange={(val) => setSortBy(val ?? "latest")}>
                 <SelectTrigger className="w-full bg-white/5 border-white/10 rounded-xl hover:bg-white/10 transition-colors font-medium">
@@ -197,14 +192,14 @@ function ProductsContent() {
 
       <div className="flex flex-col md:flex-row gap-8">
         
-        {/* Desktop Sidebar */}
+        {}
         <aside className="hidden md:block w-64 shrink-0">
           <div className="sticky top-24 glass rounded-3xl p-6">
             {filterContent}
           </div>
         </aside>
 
-        {/* Product Grid */}
+        {}
         <div className="flex-1">
           {isLoading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -250,7 +245,7 @@ function ProductsContent() {
                 ))}
               </div>
               
-              {/* Pagination / Load More */}
+              {}
               {filteredProducts.length > displayLimit && (
                 <div className="mt-12 flex justify-center">
                   <Button 
