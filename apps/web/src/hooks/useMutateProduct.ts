@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 import { useProductStore } from "@/store/products.store";
+import type { Product } from "@/types/database";
 
 export function useMutateProduct() {
   const queryClient = useQueryClient();
@@ -9,14 +10,14 @@ export function useMutateProduct() {
   const { addProduct, updateProduct, deleteProduct } = useProductStore();
 
   const createMutation = useMutation({
-    mutationFn: async (productData: any) => {
+    mutationFn: async (productData: Record<string, unknown>) => {
       const { data, error } = await supabase.from("products").insert([productData]).select().single();
       if (error) throw new Error(error.message);
       return data;
     },
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
-      addProduct(data as any);
+      addProduct(data as Product);
       toast.success("Product created successfully");
     },
     onError: (error) => {
@@ -25,7 +26,7 @@ export function useMutateProduct() {
   });
 
   const updateMutation = useMutation({
-    mutationFn: async ({ id, ...updateData }: { id: string } & any) => {
+    mutationFn: async ({ id, ...updateData }: { id: string } & Record<string, unknown>) => {
       const { data, error } = await supabase
         .from("products")
         .update(updateData)
@@ -38,7 +39,7 @@ export function useMutateProduct() {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
       queryClient.invalidateQueries({ queryKey: ["product", data.id] });
-      updateProduct(data as any);
+      updateProduct(data as Product);
       toast.success("Product updated successfully");
     },
     onError: (error) => {

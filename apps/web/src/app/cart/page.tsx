@@ -6,7 +6,6 @@ import { useCartStore } from "@/store/cart.store";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Minus, Plus, X, ShoppingBag, ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export default function CartPage() {
   const items = useCartStore((s) => s.items);
@@ -15,23 +14,6 @@ export default function CartPage() {
   
   const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
-  
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) {
-    return (
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        <div className="h-10 bg-white/5 rounded w-32 animate-pulse mb-8" />
-        <div className="space-y-4">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="glass rounded-2xl p-4 h-32 animate-pulse" />
-          ))}
-        </div>
-      </div>
-    );
-  }
 
   if (items.length === 0) {
     return (

@@ -3,11 +3,12 @@
 import { useOrders } from "@/hooks/useOrders";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Package, Search, ChevronRight, ShoppingBag } from "lucide-react";
+import { ChevronRight, ShoppingBag } from "lucide-react";
 import Link from "next/link";
+import type { Order } from "@/types/database";
 
 export default function OrdersPage() {
-  const { data: orders, isLoading, error } = useOrders();
+  const { data: orders, isLoading } = useOrders();
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -59,7 +60,7 @@ export default function OrdersPage() {
         </div>
       ) : (
         <div className="space-y-6">
-          {orders.map((order: any) => (
+          {orders?.map((order: Order) => (
             <div key={order.id} className="glass rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all group relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-[#6C63FF]/30 group-hover:bg-[#6C63FF] transition-colors" />
               
@@ -70,7 +71,7 @@ export default function OrdersPage() {
                       #{order.id.slice(0, 8).toUpperCase()}
                     </span>
                     <span className="text-muted-foreground text-sm">
-                      {new Date(order.created_at).toLocaleDateString(undefined, {
+                      {new Date(order.createdAt).toLocaleDateString(undefined, {
                         year: 'numeric',
                         month: 'long',
                         day: 'numeric'
@@ -80,10 +81,10 @@ export default function OrdersPage() {
                   </div>
 
                   <div className="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
-                    {order.order_items?.map((item: any, idx: number) => (
+                    {order.items?.map((item, idx: number) => (
                       <div key={idx} className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/5 bg-white/5">
                         <img
-                          src={item.products?.image_url || "/placeholder-product.png"}
+                          src={item.product.image || "/placeholder-product.png"}
                           alt="Product"
                           className="object-cover w-full h-full"
                         />
@@ -100,7 +101,7 @@ export default function OrdersPage() {
                 <div className="flex flex-col sm:flex-row md:flex-col justify-between items-end gap-4 min-w-[150px]">
                   <div className="text-right">
                     <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Total Amount</p>
-                    <p className="text-2xl font-black text-white">${Number(order.total_amount).toFixed(2)}</p>
+                    <p className="text-2xl font-black text-white">${Number(order.total).toFixed(2)}</p>
                   </div>
                   
                   <Button variant="outline" className="border-white/10 hover:bg-white/5 rounded-xl group/btn">

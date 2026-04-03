@@ -1,17 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { createClient } from "@/lib/supabase/client";
-import type { AuthChangeEvent, Session } from "@supabase/supabase-js";
+import type { AuthChangeEvent } from "@supabase/supabase-js";
 import { useCartStore, CartItem } from "@/store/cart.store";
 
-type DbRecord = Record<string, any>;
+type DbRecord = Record<string, unknown>;
 
 export function useCartSync() {
   const { items, setItems } = useCartStore();
   const supabase = createClient();
+  const hasSyncedRef = useRef(false);
 
   useEffect(() => {
     // Skip if Supabase client is not available (e.g., during build time)
-    if (!supabase) return;
+    if (!supabase || hasSyncedRef.current) return;
+
+    hasSyncedRef.current = true;
 
     const syncCart = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -89,10 +92,10 @@ export function useCartSync() {
 
     syncCart();
     
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, _session: Session | null) => {
-      if (_event === "SIGNED_IN") {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event: AuthChangeEvent) => {
+      if (event === "SIGNED_IN") {
         syncCart();
-      } else if (_event === "SIGNED_OUT") {
+      } else if (event === "SIGNED_OUT") {
         setItems([]);
       }
     });
@@ -100,6 +103,6 @@ export function useCartSync() {
     return () => {
       subscription.unsubscribe();
     };
-  }, [supabase, setItems]); // Only sync once on mount or when supabase instance/setItems changes
+  }, [supabase, setItems, items]);
 
 }

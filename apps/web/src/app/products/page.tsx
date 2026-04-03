@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useProducts, useCategories } from "@/hooks/useProducts";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { Input } from "@/components/ui/input";
@@ -31,10 +31,6 @@ function ProductsContent() {
 
   const { data: products, isLoading } = useProducts();
   const { data: categories } = useCategories();
-
-  useEffect(() => {
-    setDisplayLimit(12);
-  }, [searchQuery, selectedCategory, maxPrice, sortBy]);
 
   const filteredProducts = useMemo(() => {
     if (!products) return [];

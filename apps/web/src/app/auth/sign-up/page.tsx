@@ -9,7 +9,6 @@ import { signUpSchema, SignUpFormData } from "@/lib/schemas";
 import { Eye, EyeOff, Mail, User } from "lucide-react";
 import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);

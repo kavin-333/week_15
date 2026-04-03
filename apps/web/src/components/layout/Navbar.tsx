@@ -26,7 +26,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<Session["user"] | null>(null);
   const items = useCartStore((s) => s.items);
   const cartCount = items.reduce((total, item) => total + item.quantity, 0);
   const router = useRouter();
@@ -35,7 +35,8 @@ export function Navbar() {
   useCartSync();
 
   useEffect(() => {
-    setMounted(true);
+    const handleMount = () => setMounted(true);
+    handleMount();
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     

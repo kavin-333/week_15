@@ -4,9 +4,7 @@ import { CartItem } from "@/store/cart.store";
 
 export async function POST(req: Request) {
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-      apiVersion: "2023-10-16" as any,
-    });
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
 
     const { items, email } = await req.json();
 
@@ -39,8 +37,9 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ id: session.id, url: session.url });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
     console.error("Stripe Checkout Error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

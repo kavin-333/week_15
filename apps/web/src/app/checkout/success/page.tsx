@@ -12,12 +12,10 @@ export default function OrderSuccessPage() {
   const clearCart = useCartStore((s) => s.clearCart);
   const [orderId, setOrderId] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [isSaving, setIsSaving] = useState(true);
 
   useEffect(() => {
     const saveOrder = async () => {
       if (items.length === 0) {
-        setIsSaving(false);
         setMounted(true);
         return;
       }
@@ -27,7 +25,6 @@ export default function OrderSuccessPage() {
       const user = session?.user;
 
       if (!user) {
-        setIsSaving(false);
         setMounted(true);
         return;
       }
@@ -47,7 +44,6 @@ export default function OrderSuccessPage() {
 
       if (orderError) {
         console.error("Error saving order:", orderError);
-        setIsSaving(false);
         setMounted(true);
         return;
       }
@@ -68,7 +64,6 @@ export default function OrderSuccessPage() {
       }
 
       setOrderId(order.id.slice(0, 8).toUpperCase()); // Show first 8 chars of actual UUID
-      setIsSaving(false);
       setMounted(true);
       clearCart();
     };

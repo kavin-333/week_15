@@ -11,13 +11,9 @@ import { ArrowLeft, Check, Lock, MapPin, Search } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { loadStripe } from "@stripe/stripe-js";
 
 export default function CheckoutPage() {
-  const router = useRouter();
   const items = useCartStore((s) => s.items);
-  const clearCart = useCartStore((s) => s.clearCart);
   
   const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
   const [mounted, setMounted] = useState(false);
@@ -91,9 +87,10 @@ export default function CheckoutPage() {
       }
 
       window.location.href = data.url;
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to initiate checkout";
       console.error("Checkout Error:", error);
-      toast.error(error.message || "Failed to initiate checkout");
+      toast.error(errorMessage);
       setIsSubmitting(false);
     }
   };

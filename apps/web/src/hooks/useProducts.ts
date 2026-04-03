@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Product, Category } from "@/types/database";
+import { Product } from "@/types/database";
 import { useProductStore } from "@/store/products.store";
 
 interface ProductsParams {
