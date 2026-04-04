@@ -44,7 +44,9 @@ export async function proxy(request: NextRequest) {
     request.nextUrl.pathname.startsWith("/orders");
 
   if (!user && (isAdminRoute || isProtectedCustomerRoute)) {
-    return NextResponse.redirect(new URL("/auth/sign-in", request.url));
+    const signInUrl = new URL("/auth/sign-in", request.url);
+    signInUrl.searchParams.set("next", request.nextUrl.pathname);
+    return NextResponse.redirect(signInUrl);
   }
 
   if (user && isAuthRoute) {
