@@ -163,12 +163,8 @@ export function Navbar() {
                       )}
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-48 bg-[#1A1A1A] border-white/10">
-                    <DropdownMenuItem className="hover:bg-white/5">
-                      <Link href="/profile">Profile</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="hover:bg-white/5">
-                      <Link href="/orders">My Orders</Link>
-                    </DropdownMenuItem>
+                    <DropdownMenuItem render={<Link href="/profile">Profile</Link>} className="hover:bg-white/5 cursor-pointer" />
+                    <DropdownMenuItem render={<Link href="/orders">My Orders</Link>} className="hover:bg-white/5 cursor-pointer" />
                     <DropdownMenuItem className="hover:bg-white/5 text-red-400 focus:text-red-400 cursor-pointer" onClick={handleSignOut}>
                       Log out
                     </DropdownMenuItem>
@@ -228,6 +224,26 @@ export function Navbar() {
                       ))}
                     </div>
                   </div>
+
+                  {user && (
+                    <div className="space-y-4">
+                      <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Account</h3>
+                      <div className="flex flex-col gap-2">
+                        <Link
+                          href="/profile"
+                          className="text-lg font-medium hover:text-[#6C63FF] transition-colors p-2 rounded-lg hover:bg-white/5"
+                        >
+                          Profile
+                        </Link>
+                        <Link
+                          href="/orders"
+                          className="text-lg font-medium hover:text-[#6C63FF] transition-colors p-2 rounded-lg hover:bg-white/5"
+                        >
+                          My Orders
+                        </Link>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {}
