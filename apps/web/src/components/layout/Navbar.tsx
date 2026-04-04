@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ShoppingCart, Search, Menu, User, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -157,7 +158,7 @@ export function Navbar() {
                  <DropdownMenu>
                   <DropdownMenuTrigger render={<Button variant="ghost" size="icon" className="hover:bg-white/5 rounded-full h-10 w-10 bg-white/5 border border-white/10 overflow-hidden" id="user-menu-button" />}>
                       {user.user_metadata?.avatar_url ? (
-                        <img src={user.user_metadata.avatar_url} alt="Avatar" className="w-full h-full object-cover" />
+                        <Image src={user.user_metadata.avatar_url} alt="Avatar" fill className="object-cover" />
                       ) : (
                         <User className="h-5 w-5" />
                       )}

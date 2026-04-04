@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useOrders } from "@/hooks/useOrders";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -83,10 +84,11 @@ export default function OrdersPage() {
                   <div className="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
                     {order.items?.map((item, idx: number) => (
                       <div key={idx} className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/5 bg-white/5">
-                        <img
+                        <Image
                           src={item.product.image || "/placeholder-product.png"}
                           alt="Product"
-                          className="object-cover w-full h-full"
+                          fill
+                          className="object-cover"
                         />
                         {item.quantity > 1 && (
                           <span className="absolute -top-1 -right-1 bg-[#6C63FF] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#1A1A2E]">
