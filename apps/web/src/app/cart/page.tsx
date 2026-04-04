@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cart.store";
+import { createClient } from "@/lib/supabase/client";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Minus, Plus, X, ShoppingBag, ArrowRight } from "lucide-react";
@@ -11,9 +15,30 @@ export default function CartPage() {
   const items = useCartStore((s) => s.items);
   const removeItem = useCartStore((s) => s.removeItem);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
+  const router = useRouter();
+  const supabase = createClient();
+  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   
   const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+      setIsCheckingAuth(false);
+    };
+    getUser();
+  }, [supabase.auth]);
+
+  const handleCheckout = () => {
+    if (!user) {
+      router.push("/auth/sign-in?next=/checkout");
+    } else {
+      router.push("/checkout");
+    }
+  };
 
   if (items.length === 0) {
     return (
@@ -163,15 +188,15 @@ export default function CartPage() {
               </p>
             )}
 
-            <Link href="/checkout">
-              <Button
-                className="w-full bg-[#FF6584] hover:bg-[#E5567A] text-white rounded-xl h-12 text-base font-semibold shadow-lg shadow-[#FF6584]/30 transition-all duration-300"
-                id="checkout-button"
-              >
-                Proceed to Checkout
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+            <Button
+              onClick={handleCheckout}
+              disabled={isCheckingAuth}
+              className="w-full bg-[#FF6584] hover:bg-[#E5567A] text-white rounded-xl h-12 text-base font-semibold shadow-lg shadow-[#FF6584]/30 transition-all duration-300"
+              id="checkout-button"
+            >
+              {isCheckingAuth ? "Checking..." : "Proceed to Checkout"}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
 
             <Link href="/products" className="block mt-3">
               <Button

@@ -68,6 +68,13 @@ export function Navbar() {
     }
   };
 
+  const handleSignOut = async () => {
+    useCartStore.getState().clearCart();
+    await supabase.auth.signOut();
+    router.refresh();
+    router.push("/");
+  };
+
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 backdrop-blur-md ${
@@ -162,7 +169,7 @@ export function Navbar() {
                     <DropdownMenuItem className="hover:bg-white/5">
                       <Link href="/orders">My Orders</Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="hover:bg-white/5 text-red-400 focus:text-red-400" onClick={() => supabase.auth.signOut()}>
+                    <DropdownMenuItem className="hover:bg-white/5 text-red-400 focus:text-red-400 cursor-pointer" onClick={handleSignOut}>
                       Log out
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -235,7 +242,7 @@ export function Navbar() {
                       </Link>
                     </div>
                   ) : (
-                    <Button variant="outline" className="w-full rounded-xl border-white/10 hover:bg-white/5 text-red-400" onClick={() => supabase.auth.signOut()}>
+                    <Button variant="outline" className="w-full rounded-xl border-white/10 hover:bg-white/5 text-red-400" onClick={handleSignOut}>
                       Log Out
                     </Button>
                   )}

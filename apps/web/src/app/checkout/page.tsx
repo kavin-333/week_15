@@ -45,7 +45,7 @@ export default function CheckoutPage() {
         const { data: { user } } = await supabase.auth.getUser();
         
         if (!user) {
-          router.push("/auth/sign-in");
+          router.push("/auth/sign-in?next=/checkout");
           return;
         }
         
@@ -53,7 +53,7 @@ export default function CheckoutPage() {
         setIsCheckingAuth(false);
       } catch (error) {
         console.error("Auth check error:", error);
-        router.push("/auth/sign-in");
+        router.push("/auth/sign-in?next=/checkout");
       }
     };
     

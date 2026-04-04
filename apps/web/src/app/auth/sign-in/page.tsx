@@ -9,10 +9,12 @@ import { signInSchema, SignInFormData } from "@/lib/schemas";
 import { Eye, EyeOff, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SignInPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next") || "/";
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -69,7 +71,7 @@ export default function SignInPage() {
     }
 
     toast.success("Successfully signed in!");
-    router.push("/");
+    router.push(next);
   };
 
   return (
